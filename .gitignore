@@ -1,0 +1,9 @@
+# Ignore all "cache" folders
+__pycache__/
+.pytest_cache/
+
+# Ignore the coverage file
+.coverage
+
+# Ignore the PyCharm configurations
+.idea/

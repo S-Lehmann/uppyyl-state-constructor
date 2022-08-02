@@ -1,0 +1,347 @@
+<?xml version='1.0' encoding='utf-8'?>
+<nta>
+  <declaration>clock Door1_Tmpl_x;
+clock Door2_Tmpl_x;
+clock User1_Tmpl_w;
+clock User2_Tmpl_w;
+bool activated1, activated2;
+urgent chan pushed1, pushed2;
+urgent chan closed1, closed2;
+broadcast chan DBM_init_end;</declaration>
+  <template>
+    <name>Door1_Tmpl</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-7gkyyfzm5s2ks6n0" x="224" y="96">
+      <name x="248" y="104">wait</name>
+    </location>
+    <location id="loc-y3syo3k65a59hee1" x="96" y="368">
+      <name x="24" y="352">closing</name>
+      <label kind="invariant" x="40" y="368">Door1_Tmpl_x &lt;= 6</label>
+    </location>
+    <location id="loc-c3xty93mnj9hnxg0" x="96" y="224">
+      <name x="120" y="208">closed</name>
+      <label kind="invariant" x="120" y="224">Door1_Tmpl_x &lt;= 5</label>
+    </location>
+    <location id="loc-zjguw5ympcni9ylr" x="224" y="368">
+      <name x="248" y="352">open</name>
+      <label kind="invariant" x="248" y="368">Door1_Tmpl_x &lt;= 8</label>
+    </location>
+    <location id="loc-ft1wwlsv3owgt40v" x="224" y="224">
+      <name x="248" y="208">opening</name>
+      <label kind="invariant" x="248" y="224">Door1_Tmpl_x &lt;= 6</label>
+    </location>
+    <location id="loc-81t4j72pn4yygxpn" x="96" y="96">
+      <name x="112" y="104">idle</name>
+    </location>
+    <location id="loc-hlfp44j2oq4wlyul" x="46" y="124">
+      <name x="66" y="104">SYNC_Pre_Init</name>
+    </location>
+    <init ref="loc-hlfp44j2oq4wlyul"/>
+    <transition>
+      <source ref="loc-c3xty93mnj9hnxg0"/>
+      <target ref="loc-c3xty93mnj9hnxg0"/>
+      <label kind="synchronisation" x="24" y="192">closed1!</label>
+    </transition>
+    <nail x="56" y="248"/>
+    <nail x="56" y="224"/>
+    <transition>
+      <source ref="loc-c3xty93mnj9hnxg0"/>
+      <target ref="loc-81t4j72pn4yygxpn"/>
+      <label kind="guard" x="56" y="152">Door1_Tmpl_x &gt;= 5</label>
+    </transition>
+    <transition>
+      <source ref="loc-y3syo3k65a59hee1"/>
+      <target ref="loc-c3xty93mnj9hnxg0"/>
+      <label kind="guard" x="40" y="264">Door1_Tmpl_x == 6</label>
+      <label kind="assignment" x="40" y="288">activated1 = false,
+Door1_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-81t4j72pn4yygxpn"/>
+      <target ref="loc-81t4j72pn4yygxpn"/>
+      <label kind="synchronisation" x="16" y="64">closed1!</label>
+    </transition>
+    <nail x="56" y="120"/>
+    <nail x="56" y="96"/>
+    <transition>
+      <source ref="loc-81t4j72pn4yygxpn"/>
+      <target ref="loc-7gkyyfzm5s2ks6n0"/>
+      <label kind="assignment" x="120" y="64">activated1 = true</label>
+      <label kind="synchronisation" x="128" y="48">pushed1?</label>
+    </transition>
+    <transition>
+      <source ref="loc-zjguw5ympcni9ylr"/>
+      <target ref="loc-y3syo3k65a59hee1"/>
+      <label kind="guard" x="136" y="344">Door1_Tmpl_x &gt;= 4</label>
+      <label kind="assignment" x="144" y="376">Door1_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-ft1wwlsv3owgt40v"/>
+      <target ref="loc-zjguw5ympcni9ylr"/>
+      <label kind="guard" x="232" y="264">Door1_Tmpl_x == 6</label>
+      <label kind="assignment" x="232" y="288">Door1_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-7gkyyfzm5s2ks6n0"/>
+      <target ref="loc-ft1wwlsv3owgt40v"/>
+      <label kind="assignment" x="232" y="152">Door1_Tmpl_x = 0</label>
+      <label kind="synchronisation" x="232" y="136">closed2?</label>
+    </transition>
+    <transition>
+      <source ref="loc-7gkyyfzm5s2ks6n0"/>
+      <target ref="loc-7gkyyfzm5s2ks6n0"/>
+      <label kind="synchronisation" x="280" y="80">closed1!</label>
+    </transition>
+    <nail x="272" y="72"/>
+    <nail x="272" y="96"/>
+    <transition>
+      <source ref="loc-hlfp44j2oq4wlyul"/>
+      <target ref="loc-c3xty93mnj9hnxg0"/>
+      <label kind="guard" x="71" y="154">Door1_Tmpl_x &lt;= 5</label>
+      <label kind="synchronisation" x="21" y="144">DBM_init_end?</label>
+    </transition>
+  </template>
+  <template>
+    <name>Door2_Tmpl</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-ovaurxaeq6kqj77g" x="224" y="96">
+      <name x="248" y="104">wait</name>
+    </location>
+    <location id="loc-gee5mxzg2uhmj82s" x="96" y="368">
+      <name x="24" y="352">closing</name>
+      <label kind="invariant" x="40" y="368">Door2_Tmpl_x &lt;= 6</label>
+    </location>
+    <location id="loc-dxkrtf5gfxgzgd88" x="96" y="224">
+      <name x="120" y="208">closed</name>
+      <label kind="invariant" x="120" y="224">Door2_Tmpl_x &lt;= 5</label>
+    </location>
+    <location id="loc-yd8gb7veyr55exuk" x="224" y="368">
+      <name x="248" y="352">open</name>
+      <label kind="invariant" x="248" y="368">Door2_Tmpl_x &lt;= 8</label>
+    </location>
+    <location id="loc-4e23qn5x477z82ih" x="224" y="224">
+      <name x="248" y="208">opening</name>
+      <label kind="invariant" x="248" y="224">Door2_Tmpl_x &lt;= 6</label>
+    </location>
+    <location id="loc-3cnpe5socx0xm43q" x="96" y="96">
+      <name x="112" y="104">idle</name>
+    </location>
+    <location id="loc-1g6584n9qehwzai7" x="174" y="124">
+      <name x="194" y="104">SYNC_Pre_Init</name>
+    </location>
+    <init ref="loc-1g6584n9qehwzai7"/>
+    <transition>
+      <source ref="loc-dxkrtf5gfxgzgd88"/>
+      <target ref="loc-dxkrtf5gfxgzgd88"/>
+      <label kind="synchronisation" x="24" y="192">closed2!</label>
+    </transition>
+    <nail x="56" y="248"/>
+    <nail x="56" y="224"/>
+    <transition>
+      <source ref="loc-dxkrtf5gfxgzgd88"/>
+      <target ref="loc-3cnpe5socx0xm43q"/>
+      <label kind="guard" x="56" y="152">Door2_Tmpl_x &gt;= 5</label>
+    </transition>
+    <transition>
+      <source ref="loc-gee5mxzg2uhmj82s"/>
+      <target ref="loc-dxkrtf5gfxgzgd88"/>
+      <label kind="guard" x="40" y="264">Door2_Tmpl_x == 6</label>
+      <label kind="assignment" x="40" y="288">activated2 = false,
+Door2_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-3cnpe5socx0xm43q"/>
+      <target ref="loc-3cnpe5socx0xm43q"/>
+      <label kind="synchronisation" x="16" y="64">closed2!</label>
+    </transition>
+    <nail x="56" y="120"/>
+    <nail x="56" y="96"/>
+    <transition>
+      <source ref="loc-3cnpe5socx0xm43q"/>
+      <target ref="loc-ovaurxaeq6kqj77g"/>
+      <label kind="assignment" x="120" y="64">activated2 = true</label>
+      <label kind="synchronisation" x="128" y="48">pushed2?</label>
+    </transition>
+    <transition>
+      <source ref="loc-yd8gb7veyr55exuk"/>
+      <target ref="loc-gee5mxzg2uhmj82s"/>
+      <label kind="guard" x="136" y="344">Door2_Tmpl_x &gt;= 4</label>
+      <label kind="assignment" x="144" y="376">Door2_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-4e23qn5x477z82ih"/>
+      <target ref="loc-yd8gb7veyr55exuk"/>
+      <label kind="guard" x="232" y="264">Door2_Tmpl_x == 6</label>
+      <label kind="assignment" x="232" y="288">Door2_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-ovaurxaeq6kqj77g"/>
+      <target ref="loc-4e23qn5x477z82ih"/>
+      <label kind="assignment" x="232" y="152">Door2_Tmpl_x = 0</label>
+      <label kind="synchronisation" x="232" y="136">closed1?</label>
+    </transition>
+    <transition>
+      <source ref="loc-ovaurxaeq6kqj77g"/>
+      <target ref="loc-ovaurxaeq6kqj77g"/>
+      <label kind="synchronisation" x="280" y="80">closed2!</label>
+    </transition>
+    <nail x="272" y="72"/>
+    <nail x="272" y="96"/>
+    <transition>
+      <source ref="loc-1g6584n9qehwzai7"/>
+      <target ref="loc-4e23qn5x477z82ih"/>
+      <label kind="guard" x="199" y="154">Door2_Tmpl_x &lt;= 6</label>
+      <label kind="synchronisation" x="149" y="144">DBM_init_end?</label>
+    </transition>
+  </template>
+  <template>
+    <name>User1_Tmpl</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-07rxpyn7vlqetr0z" x="192" y="160"/>
+    <location id="loc-cnf7zpz70s99cv6j" x="96" y="96">
+      <name x="72" y="64">idle</name>
+    </location>
+    <location id="loc-3pw2ytk8mi2ifz4u" x="142" y="60">
+      <name x="162" y="40">SYNC_Pre_Init</name>
+    </location>
+    <init ref="loc-3pw2ytk8mi2ifz4u"/>
+    <transition>
+      <source ref="loc-cnf7zpz70s99cv6j"/>
+      <target ref="loc-07rxpyn7vlqetr0z"/>
+      <label kind="guard" x="72" y="168">!activated1</label>
+      <label kind="assignment" x="72" y="184">User1_Tmpl_w = 0</label>
+    </transition>
+    <nail x="96" y="160"/>
+    <transition>
+      <source ref="loc-07rxpyn7vlqetr0z"/>
+      <target ref="loc-cnf7zpz70s99cv6j"/>
+      <label kind="synchronisation" x="152" y="72">pushed1!</label>
+    </transition>
+    <nail x="192" y="96"/>
+    <transition>
+      <source ref="loc-3pw2ytk8mi2ifz4u"/>
+      <target ref="loc-07rxpyn7vlqetr0z"/>
+      <label kind="synchronisation" x="117" y="80">DBM_init_end?</label>
+    </transition>
+  </template>
+  <template>
+    <name>User2_Tmpl</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-2xqbnwmh27e1y4zt" x="192" y="160"/>
+    <location id="loc-m0auvpmv7j9wg2oh" x="96" y="96">
+      <name x="72" y="64">idle</name>
+    </location>
+    <location id="loc-ka8jhbv110deam17" x="46" y="-4">
+      <name x="66" y="-24">SYNC_Pre_Init</name>
+    </location>
+    <init ref="loc-ka8jhbv110deam17"/>
+    <transition>
+      <source ref="loc-m0auvpmv7j9wg2oh"/>
+      <target ref="loc-2xqbnwmh27e1y4zt"/>
+      <label kind="guard" x="72" y="168">!activated2</label>
+      <label kind="assignment" x="72" y="184">User2_Tmpl_w = 0</label>
+    </transition>
+    <nail x="96" y="160"/>
+    <transition>
+      <source ref="loc-2xqbnwmh27e1y4zt"/>
+      <target ref="loc-m0auvpmv7j9wg2oh"/>
+      <label kind="synchronisation" x="152" y="72">pushed2!</label>
+    </transition>
+    <nail x="192" y="96"/>
+    <transition>
+      <source ref="loc-ka8jhbv110deam17"/>
+      <target ref="loc-m0auvpmv7j9wg2oh"/>
+      <label kind="synchronisation" x="21" y="16">DBM_init_end?</label>
+    </transition>
+  </template>
+  <template>
+    <name>SYNC_DBM_Init</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-nf0tizxppap9ptrp" x="0" y="0">
+      <name x="20" y="-20">Init</name>
+      <committed/>
+    </location>
+    <location id="loc-3z79566ulvnrc4by" x="0" y="100"/>
+    <location id="loc-miorevpiwx39kq9n" x="0" y="200"/>
+    <location id="loc-0d5aq4v6r7eissdf" x="0" y="300">
+      <urgent/>
+    </location>
+    <location id="loc-d22anktux714sit9" x="0" y="400">
+      <name x="20" y="380">End</name>
+    </location>
+    <init ref="loc-nf0tizxppap9ptrp"/>
+    <transition>
+      <source ref="loc-nf0tizxppap9ptrp"/>
+      <target ref="loc-3z79566ulvnrc4by"/>
+      <label kind="assignment" x="0" y="50">User2_Tmpl_w = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-3z79566ulvnrc4by"/>
+      <target ref="loc-miorevpiwx39kq9n"/>
+      <label kind="assignment" x="0" y="150">Door1_Tmpl_x = 0,
+User1_Tmpl_w = 0,
+Door2_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-miorevpiwx39kq9n"/>
+      <target ref="loc-0d5aq4v6r7eissdf"/>
+      <label kind="guard" x="0" y="230">Door1_Tmpl_x &gt;= 0 &amp;&amp; Door2_Tmpl_x &gt;= 0 &amp;&amp; User1_Tmpl_w &gt;= 0 &amp;&amp; User2_Tmpl_w &gt;= 10 &amp;&amp; Door1_Tmpl_x &lt;= 5 &amp;&amp; Door1_Tmpl_x - Door2_Tmpl_x &lt;= 0 &amp;&amp; Door1_Tmpl_x - User1_Tmpl_w &lt;= 0 &amp;&amp; Door1_Tmpl_x - User2_Tmpl_w &lt;= -10 &amp;&amp; Door2_Tmpl_x &lt;= 5 &amp;&amp; Door2_Tmpl_x - Door1_Tmpl_x &lt;= 0 &amp;&amp; Door2_Tmpl_x - User1_Tmpl_w &lt;= 0 &amp;&amp; Door2_Tmpl_x - User2_Tmpl_w &lt;= -10 &amp;&amp; User1_Tmpl_w &lt;= 5 &amp;&amp; User1_Tmpl_w - Door1_Tmpl_x &lt;= 0 &amp;&amp; User1_Tmpl_w - Door2_Tmpl_x &lt;= 0 &amp;&amp; User1_Tmpl_w - User2_Tmpl_w &lt;= -10 &amp;&amp; User2_Tmpl_w &lt;= 19 &amp;&amp; User2_Tmpl_w - Door1_Tmpl_x &lt;= 14 &amp;&amp; User2_Tmpl_w - Door2_Tmpl_x &lt;= 14 &amp;&amp; User2_Tmpl_w - User1_Tmpl_w &lt;= 14</label>
+    </transition>
+    <transition>
+      <source ref="loc-0d5aq4v6r7eissdf"/>
+      <target ref="loc-d22anktux714sit9"/>
+      <label kind="assignment" x="0" y="350">activated1 = false,
+activated2 = true</label>
+      <label kind="synchronisation" x="0" y="370">DBM_init_end!</label>
+    </transition>
+  </template>
+  <system>Door1 = Door1_Tmpl();
+Door2 = Door2_Tmpl();
+User1 = User1_Tmpl();
+User2 = User2_Tmpl();
+SYNC_Init = SYNC_DBM_Init();
+system Door1, Door2, User1, User2, SYNC_Init;</system>
+  <queries>
+    <query>
+      <formula></formula>
+      <comment>971204, Kim G. Larsen, Fredrik Larsson, Paul Pettersson &amp; Arne Skou,
+     at Fairmont Hotel, San Francisco, USA.
+971208, Paul, finalized, in the air between San Francisco and London.
+011015, Paul, added deadlock and livness properties.</comment>
+    </query>
+    <query>
+      <formula>A[] not (Door1.open and Door2.open)</formula>
+      <comment>Mutex: The two doors are never open at the same time.</comment>
+    </query>
+    <query>
+      <formula>A[] (Door1.opening imply User1.w&lt;=31) and 
+    (Door2.opening imply User2.w&lt;=31)</formula>
+      <comment>Bounded Liveness: A door will open within 31 seconds.</comment>
+    </query>
+    <query>
+      <formula>E&lt;&gt; Door1.open</formula>
+      <comment>Door 1 can open.</comment>
+    </query>
+    <query>
+      <formula>E&lt;&gt; Door2.open</formula>
+      <comment>Door 2 can open.</comment>
+    </query>
+    <query>
+      <formula>Door1.wait --&gt; Door1.open</formula>
+      <comment>Liveness: Whenever a button is pushed, the corresponding door will eventually open.</comment>
+    </query>
+    <query>
+      <formula>Door2.wait --&gt; Door2.open</formula>
+      <comment></comment>
+    </query>
+    <query>
+      <formula>A[] not deadlock</formula>
+      <comment>The system is deadlock-free.</comment>
+    </query>
+  </queries>
+</nta>

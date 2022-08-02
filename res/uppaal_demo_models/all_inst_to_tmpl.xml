@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='utf-8'?>
+<nta>
+  <declaration>clock Door1_Tmpl_x;
+clock Door2_Tmpl_x;
+clock User1_Tmpl_w;
+clock User2_Tmpl_w;
+bool activated1, activated2;
+urgent chan pushed1, pushed2;
+urgent chan closed1, closed2;</declaration>
+  <template>
+    <name>Door1_Tmpl</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-gr1yj7h6kw4rp9po" x="224" y="96">
+      <name x="248" y="104">wait</name>
+    </location>
+    <location id="loc-sztax1bfi4615uf0" x="96" y="368">
+      <name x="24" y="352">closing</name>
+      <label kind="invariant" x="40" y="368">Door1_Tmpl_x &lt;= 6</label>
+    </location>
+    <location id="loc-vxobeu96oy1r89qt" x="96" y="224">
+      <name x="120" y="208">closed</name>
+      <label kind="invariant" x="120" y="224">Door1_Tmpl_x &lt;= 5</label>
+    </location>
+    <location id="loc-u8s3e22jfkfpsk9q" x="224" y="368">
+      <name x="248" y="352">open</name>
+      <label kind="invariant" x="248" y="368">Door1_Tmpl_x &lt;= 8</label>
+    </location>
+    <location id="loc-tgy60srfktdaxbbj" x="224" y="224">
+      <name x="248" y="208">opening</name>
+      <label kind="invariant" x="248" y="224">Door1_Tmpl_x &lt;= 6</label>
+    </location>
+    <location id="loc-2wysn6ub3w695cwm" x="96" y="96">
+      <name x="112" y="104">idle</name>
+    </location>
+    <init ref="loc-2wysn6ub3w695cwm"/>
+    <transition>
+      <source ref="loc-vxobeu96oy1r89qt"/>
+      <target ref="loc-vxobeu96oy1r89qt"/>
+      <label kind="synchronisation" x="24" y="192">closed1!</label>
+    </transition>
+    <nail x="56" y="248"/>
+    <nail x="56" y="224"/>
+    <transition>
+      <source ref="loc-vxobeu96oy1r89qt"/>
+      <target ref="loc-2wysn6ub3w695cwm"/>
+      <label kind="guard" x="56" y="152">Door1_Tmpl_x &gt;= 5</label>
+    </transition>
+    <transition>
+      <source ref="loc-sztax1bfi4615uf0"/>
+      <target ref="loc-vxobeu96oy1r89qt"/>
+      <label kind="guard" x="40" y="264">Door1_Tmpl_x == 6</label>
+      <label kind="assignment" x="40" y="288">activated1 = false,
+Door1_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-2wysn6ub3w695cwm"/>
+      <target ref="loc-2wysn6ub3w695cwm"/>
+      <label kind="synchronisation" x="16" y="64">closed1!</label>
+    </transition>
+    <nail x="56" y="120"/>
+    <nail x="56" y="96"/>
+    <transition>
+      <source ref="loc-2wysn6ub3w695cwm"/>
+      <target ref="loc-gr1yj7h6kw4rp9po"/>
+      <label kind="assignment" x="120" y="64">activated1 = true</label>
+      <label kind="synchronisation" x="128" y="48">pushed1?</label>
+    </transition>
+    <transition>
+      <source ref="loc-u8s3e22jfkfpsk9q"/>
+      <target ref="loc-sztax1bfi4615uf0"/>
+      <label kind="guard" x="136" y="344">Door1_Tmpl_x &gt;= 4</label>
+      <label kind="assignment" x="144" y="376">Door1_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-tgy60srfktdaxbbj"/>
+      <target ref="loc-u8s3e22jfkfpsk9q"/>
+      <label kind="guard" x="232" y="264">Door1_Tmpl_x == 6</label>
+      <label kind="assignment" x="232" y="288">Door1_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-gr1yj7h6kw4rp9po"/>
+      <target ref="loc-tgy60srfktdaxbbj"/>
+      <label kind="assignment" x="232" y="152">Door1_Tmpl_x = 0</label>
+      <label kind="synchronisation" x="232" y="136">closed2?</label>
+    </transition>
+    <transition>
+      <source ref="loc-gr1yj7h6kw4rp9po"/>
+      <target ref="loc-gr1yj7h6kw4rp9po"/>
+      <label kind="synchronisation" x="280" y="80">closed1!</label>
+    </transition>
+    <nail x="272" y="72"/>
+    <nail x="272" y="96"/>
+  </template>
+  <template>
+    <name>Door2_Tmpl</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-4r47w1xdj1euca4u" x="224" y="96">
+      <name x="248" y="104">wait</name>
+    </location>
+    <location id="loc-8tn2pcgpwvyh7kz7" x="96" y="368">
+      <name x="24" y="352">closing</name>
+      <label kind="invariant" x="40" y="368">Door2_Tmpl_x &lt;= 6</label>
+    </location>
+    <location id="loc-cv30me3pa43bjx28" x="96" y="224">
+      <name x="120" y="208">closed</name>
+      <label kind="invariant" x="120" y="224">Door2_Tmpl_x &lt;= 5</label>
+    </location>
+    <location id="loc-fihz0koqp2pacyjj" x="224" y="368">
+      <name x="248" y="352">open</name>
+      <label kind="invariant" x="248" y="368">Door2_Tmpl_x &lt;= 8</label>
+    </location>
+    <location id="loc-tdtflb30rdw7whll" x="224" y="224">
+      <name x="248" y="208">opening</name>
+      <label kind="invariant" x="248" y="224">Door2_Tmpl_x &lt;= 6</label>
+    </location>
+    <location id="loc-oe660otj7mmb9u08" x="96" y="96">
+      <name x="112" y="104">idle</name>
+    </location>
+    <init ref="loc-oe660otj7mmb9u08"/>
+    <transition>
+      <source ref="loc-cv30me3pa43bjx28"/>
+      <target ref="loc-cv30me3pa43bjx28"/>
+      <label kind="synchronisation" x="24" y="192">closed2!</label>
+    </transition>
+    <nail x="56" y="248"/>
+    <nail x="56" y="224"/>
+    <transition>
+      <source ref="loc-cv30me3pa43bjx28"/>
+      <target ref="loc-oe660otj7mmb9u08"/>
+      <label kind="guard" x="56" y="152">Door2_Tmpl_x &gt;= 5</label>
+    </transition>
+    <transition>
+      <source ref="loc-8tn2pcgpwvyh7kz7"/>
+      <target ref="loc-cv30me3pa43bjx28"/>
+      <label kind="guard" x="40" y="264">Door2_Tmpl_x == 6</label>
+      <label kind="assignment" x="40" y="288">activated2 = false,
+Door2_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-oe660otj7mmb9u08"/>
+      <target ref="loc-oe660otj7mmb9u08"/>
+      <label kind="synchronisation" x="16" y="64">closed2!</label>
+    </transition>
+    <nail x="56" y="120"/>
+    <nail x="56" y="96"/>
+    <transition>
+      <source ref="loc-oe660otj7mmb9u08"/>
+      <target ref="loc-4r47w1xdj1euca4u"/>
+      <label kind="assignment" x="120" y="64">activated2 = true</label>
+      <label kind="synchronisation" x="128" y="48">pushed2?</label>
+    </transition>
+    <transition>
+      <source ref="loc-fihz0koqp2pacyjj"/>
+      <target ref="loc-8tn2pcgpwvyh7kz7"/>
+      <label kind="guard" x="136" y="344">Door2_Tmpl_x &gt;= 4</label>
+      <label kind="assignment" x="144" y="376">Door2_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-tdtflb30rdw7whll"/>
+      <target ref="loc-fihz0koqp2pacyjj"/>
+      <label kind="guard" x="232" y="264">Door2_Tmpl_x == 6</label>
+      <label kind="assignment" x="232" y="288">Door2_Tmpl_x = 0</label>
+    </transition>
+    <transition>
+      <source ref="loc-4r47w1xdj1euca4u"/>
+      <target ref="loc-tdtflb30rdw7whll"/>
+      <label kind="assignment" x="232" y="152">Door2_Tmpl_x = 0</label>
+      <label kind="synchronisation" x="232" y="136">closed1?</label>
+    </transition>
+    <transition>
+      <source ref="loc-4r47w1xdj1euca4u"/>
+      <target ref="loc-4r47w1xdj1euca4u"/>
+      <label kind="synchronisation" x="280" y="80">closed2!</label>
+    </transition>
+    <nail x="272" y="72"/>
+    <nail x="272" y="96"/>
+  </template>
+  <template>
+    <name>User1_Tmpl</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-n9m7ro20shkate0s" x="192" y="160"/>
+    <location id="loc-zogg3tqq1ya4u7d0" x="96" y="96">
+      <name x="72" y="64">idle</name>
+    </location>
+    <init ref="loc-zogg3tqq1ya4u7d0"/>
+    <transition>
+      <source ref="loc-zogg3tqq1ya4u7d0"/>
+      <target ref="loc-n9m7ro20shkate0s"/>
+      <label kind="guard" x="72" y="168">!activated1</label>
+      <label kind="assignment" x="72" y="184">User1_Tmpl_w = 0</label>
+    </transition>
+    <nail x="96" y="160"/>
+    <transition>
+      <source ref="loc-n9m7ro20shkate0s"/>
+      <target ref="loc-zogg3tqq1ya4u7d0"/>
+      <label kind="synchronisation" x="152" y="72">pushed1!</label>
+    </transition>
+    <nail x="192" y="96"/>
+  </template>
+  <template>
+    <name>User2_Tmpl</name>
+    <parameter></parameter>
+    <declaration></declaration>
+    <location id="loc-s04a66e754u7bb22" x="192" y="160"/>
+    <location id="loc-ldqsq29mf9mlpl5u" x="96" y="96">
+      <name x="72" y="64">idle</name>
+    </location>
+    <init ref="loc-ldqsq29mf9mlpl5u"/>
+    <transition>
+      <source ref="loc-ldqsq29mf9mlpl5u"/>
+      <target ref="loc-s04a66e754u7bb22"/>
+      <label kind="guard" x="72" y="168">!activated2</label>
+      <label kind="assignment" x="72" y="184">User2_Tmpl_w = 0</label>
+    </transition>
+    <nail x="96" y="160"/>
+    <transition>
+      <source ref="loc-s04a66e754u7bb22"/>
+      <target ref="loc-ldqsq29mf9mlpl5u"/>
+      <label kind="synchronisation" x="152" y="72">pushed2!</label>
+    </transition>
+    <nail x="192" y="96"/>
+  </template>
+  <system>Door1 = Door1_Tmpl();
+Door2 = Door2_Tmpl();
+User1 = User1_Tmpl();
+User2 = User2_Tmpl();
+system Door1, Door2, User1, User2;</system>
+  <queries>
+    <query>
+      <formula></formula>
+      <comment>971204, Kim G. Larsen, Fredrik Larsson, Paul Pettersson &amp; Arne Skou,
+     at Fairmont Hotel, San Francisco, USA.
+971208, Paul, finalized, in the air between San Francisco and London.
+011015, Paul, added deadlock and livness properties.</comment>
+    </query>
+    <query>
+      <formula>A[] not (Door1.open and Door2.open)</formula>
+      <comment>Mutex: The two doors are never open at the same time.</comment>
+    </query>
+    <query>
+      <formula>A[] (Door1.opening imply User1.w&lt;=31) and 
+    (Door2.opening imply User2.w&lt;=31)</formula>
+      <comment>Bounded Liveness: A door will open within 31 seconds.</comment>
+    </query>
+    <query>
+      <formula>E&lt;&gt; Door1.open</formula>
+      <comment>Door 1 can open.</comment>
+    </query>
+    <query>
+      <formula>E&lt;&gt; Door2.open</formula>
+      <comment>Door 2 can open.</comment>
+    </query>
+    <query>
+      <formula>Door1.wait --&gt; Door1.open</formula>
+      <comment>Liveness: Whenever a button is pushed, the corresponding door will eventually open.</comment>
+    </query>
+    <query>
+      <formula>Door2.wait --&gt; Door2.open</formula>
+      <comment></comment>
+    </query>
+    <query>
+      <formula>A[] not deadlock</formula>
+      <comment>The system is deadlock-free.</comment>
+    </query>
+  </queries>
+</nta>
