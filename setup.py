@@ -20,8 +20,8 @@ setup(
     packages=["uppyyl_state_constructor"],
     entry_points={
         "console_scripts": [
-            'uppyyl_state_constructor = uppyyl_state_constructor.uppyyl_state_constructor:main',
-            'uppyyl-state-constructor = uppyyl_state_constructor.uppyyl_state_constructor:main',
+            'uppyyl_state_constructor = uppyyl_state_constructor.__main__:main',
+            'uppyyl-state-constructor = uppyyl_state_constructor.__main__:main',
         ]
     },
     version=version,
