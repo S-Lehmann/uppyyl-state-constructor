@@ -32,10 +32,10 @@ setup(
     url="",
     install_requires=[
         'uppyyl_simulator',
-        'numpy==1.18.1',
-        'pytest==5.3.5',
-        'setuptools==49.3.1',
-        'colorama==0.4.3',
-        'matplotlib==3.2.1'
+        'numpy==1.22.4',
+        'pytest==7.1.2',
+        'pytest-subtests==0.8.0',
+        'colorama==0.4.4',
+        'matplotlib~=3.3.0'
     ],
 )
